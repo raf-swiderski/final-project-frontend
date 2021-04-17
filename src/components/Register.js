@@ -6,7 +6,7 @@ import { useState } from "react";
 function Register() {
 
     // let history = useHistory(); -- This object lets you send the user to different pages. 
-    // Used like this, in an html tag: onClick={() => {history.push('/home'); }}
+    // Used like this, inside an html tag: onClick={() => {history.push('/home'); }}
 
     //Defining constants, when the user fills in the form, we assign the user's input values to these.
     const [name, setName] = useState("")
