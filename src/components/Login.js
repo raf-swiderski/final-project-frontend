@@ -1,38 +1,22 @@
+import '../css/Authentication.css'
+import { useHistory } from "react-router-dom";
 
-
-
-const LogIn = () => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [magicData, setMagicData] = useState(null)
+function LogIn() {
+    let history = useHistory();
     
-    /*
-    const submitForm = () => {
-      fetch("http://my-api.com/login", {
-        method: "POST",
-        body: {
-          username: username,
-          password: password
-        }
-      })
-      .then((response) => {
-        // login successful
-        setMagicData(response)
-      })
-      .catch((error) => {
-        // something went wrong
-        showErrorModal(error)
-      })
-    }*/
     
     return (
       <div class="sign-in-container">
         <div class="sign-in-form-container">
           <form class="sign-in-form">
-            <input name="username" onChange={setUsername}/>
-            <input name="password" onChange={setPassword}/>
+            <input name="username" /><br></br>
+            <input name="password" />
           </form>
-          <button onClick={submitForm}/>
+          <button 
+            onClick={() => {
+              history.push('/home');
+            }}>Log In
+          </button>
           <ul>
           </ul>
         </div>
@@ -41,4 +25,4 @@ const LogIn = () => {
   };
 
 
-  export default SignIn
+  export default LogIn

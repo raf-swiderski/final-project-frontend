@@ -1,28 +1,24 @@
 import './App.css';
+import LogIn from './components/Login'
+import Home from './components/Home'
+import LandingPage from './components/LandingPage'
+
+
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+
 
 function App() {
   return (
     <Router>
-      <div>
-        <nav>
-          <li>
-            <Link to="/login">Log In</Link>
-          </li> 
-        </nav>
-      </div>
-    
-
-    <Switch>
-      <Route path="/login">
-        <Login />
-      </Route>
-    </Switch>
+      <Switch>
+        <Route exact path="/" component={LandingPage} /> 
+        <Route exact path="/login" component={LogIn} /> 
+        <Route exact path="/home" component={() => <Home authorized={true}/>} /> 
+      </Switch>
     </Router>
 
 
