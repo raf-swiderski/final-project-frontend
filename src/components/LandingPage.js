@@ -14,6 +14,9 @@ function LandingPage() {
                     <li>
                     <Link to="/login">LogIn</Link>
                     </li>
+                    <li>
+                    <Link to="/register">Register</Link>
+                    </li>
                 </ul>
         </div>
     );
