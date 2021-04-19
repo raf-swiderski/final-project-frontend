@@ -19,7 +19,7 @@ function Home({ authorized }) {
     if (authorized) {
       // fetch recipes from backend api
       // GET is by default, I've added it so we can easily re use it with other Http Verbs (e.g. POST)
-      fetch("http://localhost:9000/fetch_recipe", { method: "GET" })
+      fetch("http://localhost:9000/", { method: "GET" })
         // turn api response into json
         .then((res) => res.json())
         .then(
@@ -40,26 +40,36 @@ function Home({ authorized }) {
     }
   }, []);
 
-  if (!authorized) {
-    return <Redirect to="/login" />;
-  } else if (error) {
-    return <div>Error: {error.message}</div>;
-  } else if (!isLoaded) {
-    return <div>Loading...</div>;
-  } else {
-    return (
-      <div>
-        <title>Home</title>
-        <h1> Welcome to Cooking Chaos </h1>
-        <br></br>
-        <h2>Please pick your Kata.</h2>
-        <Link to="/">Log Out</Link>
+  localStorage.setItem("recipes", recipes)
+  
+  return (
+    <div>Hellooooo</div>
 
-        {/* inserting RecipeList component, it is child component and passsing recipes as props */}
-        <RecipeList recipes={recipes} />
-      </div>
-    );
-  }
+  )
+
+  
+  // if (!authorized) {
+  //   return <Redirect to="/login" />;
+  // } else if (error) {
+  //   return <div>Error: {error.message}</div>;
+  // } else if (!isLoaded) {
+  //   return <div>Loading...</div>;
+  // } else {
+  //   return (
+  //     <div>
+  //       <title>Home</title>
+  //       <h1> Welcome to Cooking Chaos </h1>
+  //       <br></br>
+  //       <h2>Please pick your Kata.</h2>
+  //       <Link to="/">Log Out</Link>
+
+  //       {/* inserting RecipeList component, it is child component and passsing recipes as props */}
+  //       <RecipeList recipes={recipes} />
+  //     </div>
+  //   );
+  
+  // }
+
 }
 
 export default Home;
