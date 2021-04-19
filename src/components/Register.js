@@ -1,23 +1,28 @@
 import React from "react";
 import { Link } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 function Register() {
   // let history = useHistory(); -- This object lets you send the user to different pages.
   // Used like this, inside an html tag: onClick={() => {history.push('/home'); }}
-
+  
   //Defining constants, when the user fills in the form, we assign the user's input values to these.
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
+  const [errors, setErrors] = useState(null);
+  const historyHook = useHistory();
 
   //function that assigns the form values to the browser's storage. (like sessions/cookies)
   //Local storage object can be see when you type `console.log(localStorage)` into the console
   function submitForm(event) {
     event.preventDefault();
+
+    console.log({ name, email, username, password, password_confirmation });
+
     const data = {
       name: name,
       email: email,
@@ -38,21 +43,22 @@ function Register() {
     fetch("http://localhost:9000/users/register", options)
       // turn api response into json
       .then((res) => res.json())
-      .then(
-        (result) => {
-          // response from api is loaded
-          // assign results from api to recipes array (using react useState function)
-          console.log(result);
-        },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
-        (error) => {
-          console.log(error);
-          // setIsLoaded(true);
-          // setError(error);
+      .then((result) => {
+        if (result.errors) {
+          // do something about errors
+          setErrors(result.errors);
+          return;
         }
-      );
+
+        // store their user id 
+        localStorage.setItem("userId", result.data.id)
+
+        // navigate to the home screen
+        historyHook.push('/home')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (
@@ -60,6 +66,14 @@ function Register() {
       <title>Register</title>
       <h1>Create An Account</h1>
       <br></br>
+   
+      {errors && (
+        <div>
+          {errors.map((error, index) => (
+            <p key={`error-${index}`}>{error.message}</p>
+          ))}
+        </div>
+      )}
 
       <div>
         <div>
