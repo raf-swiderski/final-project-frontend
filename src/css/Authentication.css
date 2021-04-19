@@ -1,0 +1,15 @@
+.sign-in-container {
+    text-align: centre;
+    background-color: antiquewhite;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+input[name=username], input[name=password] {
+    box-sizing: border-box;
+  }
