@@ -5,8 +5,8 @@ function RecipeList(props) {
       {props.recipes.map((recipe) => (
         <Recipe
           key={recipe.id.toString()}
-          title={recipe.title}
-          image={recipe.image}
+          title={recipe.recipe_name}
+          databaseId={recipe.recipe_id}
         />
       ))}
     </div>
@@ -16,8 +16,7 @@ function RecipeList(props) {
 function Recipe(props) {
   return (
     <div>
-      <h3>{props.title}</h3>
-      <img alt={props.title} src={props.image} />
+      <a href="">{props.title}</a>
     </div>
   );
 }
