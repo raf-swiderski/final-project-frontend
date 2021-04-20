@@ -3,13 +3,17 @@ import { Redirect, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RecipeList from "./RecipeList";
 
+// function CookingLevel() {
+//   return cooking_level
+// }
+
 function Home() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [recipes, setRecipes] = useState([]);
   const authorized = localStorage.getItem("userId")
   const historyHook = useHistory()
-  const user_level = 3; // to be replace with localStorage.getItem
+  const cooking_level = parseInt(localStorage.getItem("cookingLevel")); // to be replace with localStorage.getItem
 
   useEffect(() => {
     if (authorized) {
@@ -18,7 +22,7 @@ function Home() {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          level: JSON.stringify(user_level)
+          level: JSON.stringify(cooking_level)
         }};
 
       fetch(`http://localhost:9000/`, options)
@@ -60,6 +64,9 @@ function Home() {
         <h1> Welcome to Cooking Chaos </h1>
         <br></br>
         <h2>Please pick your Kata.</h2>
+        <h3>Cooking Level: {cooking_level} </h3>
+        <h3>Points: </h3>
+        <h3>Username: </h3>
         <button onClick={onLogOut}>Log Out</button>
 
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}
