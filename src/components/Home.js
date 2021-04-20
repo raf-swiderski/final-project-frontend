@@ -4,35 +4,32 @@ import { Link } from "react-router-dom";
 import RecipeList from "./RecipeList";
 
 function Home() {
-  // setting error to null
   const [error, setError] = useState(null);
-  // setting that response from api is not loaded yet
   const [isLoaded, setIsLoaded] = useState(false);
-  // setting recipes to an empty array
   const [recipes, setRecipes] = useState([]);
-
   const authorized = localStorage.getItem("userId")
-
   const historyHook = useHistory()
+  const user_level = 3; // to be replace with localStorage.getItem
 
-
-  // Note: the empty deps array [] means
-  // this useEffect react hook will run once
-  // similar to componentDidMount()
-  // useEffect is called automaticly by react after component Home is loaded
   useEffect(() => {
     if (authorized) {
-      // fetch recipes from backend api
-      // GET is by default, I've added it so we can easily re use it with other Http Verbs (e.g. POST)
-      fetch("http://localhost:9000/fetch_recipe", { method: "GET" })
+      
+      const options = { 
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          level: JSON.stringify(user_level)
+        }};
+
+      fetch(`http://localhost:9000/`, options)
         // turn api response into json
         .then((res) => res.json())
-        .then(
-          (result) => {
+        .then((result) => {
             // response from api is loaded
             setIsLoaded(true);
+            console.log(result)
             // assign results from api to recipes array (using react useState function)
-            setRecipes(result.results);
+            setRecipes(result.rows);
           },
           // Note: it's important to handle errors here
           // instead of a catch() block so that we don't swallow
