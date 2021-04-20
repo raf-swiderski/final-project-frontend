@@ -13,12 +13,15 @@ function Home() {
   const [recipes, setRecipes] = useState([]);
   const authorized = localStorage.getItem("userId")
   const historyHook = useHistory()
-  const cooking_level = parseInt(localStorage.getItem("cookingLevel")); // to be replace with localStorage.getItem
+  const cooking_level = parseInt(localStorage.getItem("cookingLevel"));
+  const points = parseInt(localStorage.getItem("points"))
+  const username = localStorage.getItem("username")
+   // to be replace with localStorage.getItem
 
   useEffect(() => {
     if (authorized) {
-      
-      const options = { 
+
+      const options = {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -47,7 +50,7 @@ function Home() {
   }, []);
 
   const onLogOut = () => {
-    localStorage.removeItem("userId")
+    localStorage.clear()
     historyHook.push("/")
   }
 
@@ -65,8 +68,8 @@ function Home() {
         <br></br>
         <h2>Please pick your Kata.</h2>
         <h3>Cooking Level: {cooking_level} </h3>
-        <h3>Points: </h3>
-        <h3>Username: </h3>
+        <h3>Points: {points} </h3>
+        <h3>Username: {username} </h3>
         <button onClick={onLogOut}>Log Out</button>
 
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}

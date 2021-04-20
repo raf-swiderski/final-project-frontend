@@ -6,7 +6,7 @@ import { useState } from "react";
 function Register() {
   // let history = useHistory(); -- This object lets you send the user to different pages.
   // Used like this, inside an html tag: onClick={() => {history.push('/home'); }}
-  
+
   //Defining constants, when the user fills in the form, we assign the user's input values to these.
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -52,10 +52,12 @@ function Register() {
           return;
         }
 
-        // store their user id 
+        // store their user id
         localStorage.setItem("userId", result.data.id)
         localStorage.setItem("cookingLevel", result.data.cooking_level)
-        
+        localStorage.setItem("points", result.data.points)
+        localStorage.setItem("username", result.data.username)
+
 
         // navigate to the home screen
         historyHook.push('/home')
@@ -70,7 +72,7 @@ function Register() {
       <title>Register</title>
       <h1>Create An Account</h1>
       <br></br>
-   
+
       {errors && (
         <div>
           {errors.map((error, index) => (
