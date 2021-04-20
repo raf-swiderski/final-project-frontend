@@ -13,6 +13,7 @@ function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [password_confirmation, setPasswordConfirmation] = useState("");
+  const [cooking_level, setCookingLevel] = useState("");
   const [errors, setErrors] = useState(null);
   const historyHook = useHistory();
 
@@ -29,7 +30,7 @@ function Register() {
       username: username,
       password: password,
       password_confirmation: password_confirmation,
-      cooking_level: 1,
+      cooking_level: cooking_level,
     };
 
     const options = {
@@ -79,6 +80,7 @@ function Register() {
         <div>
           <form onSubmit={submitForm}>
             <div>
+            <label for="name">Name:</label>
               <input
                 type="text"
                 id="name"
@@ -89,6 +91,7 @@ function Register() {
               />
             </div>
             <div>
+            <label for="email">Email:</label>
               <input
                 type="text"
                 id="email"
@@ -99,6 +102,7 @@ function Register() {
               />
             </div>
             <div>
+            <label for="username">Username:</label>
               <input
                 type="text"
                 id="username"
@@ -109,6 +113,7 @@ function Register() {
               />
             </div>
             <div>
+            <label for="password">Password:</label>
               <input
                 type="password"
                 id="password"
@@ -119,6 +124,7 @@ function Register() {
               />
             </div>
             <div>
+            <label for="password_confirmation">Password Confirmation:</label>
               <input
                 type="password"
                 id="password_confirmation"
@@ -127,6 +133,21 @@ function Register() {
                 onChange={({ target }) => setPasswordConfirmation(target.value)}
                 required
               />
+            </div>
+            <div>
+            <label for="cooking_level">Your cooking ability:</label>
+              <select name="cooking_level" id="cooking_level" onChange={({ target }) => setCookingLevel(target.value)}
+                required>
+                  <option value="1">1(Rookie! 🥣)</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9(Expert!🧑‍🍳 🌟)</option>
+              </select>
             </div>
             <div>
               <button type="submit" value="Create Account">
