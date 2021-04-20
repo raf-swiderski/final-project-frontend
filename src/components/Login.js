@@ -1,18 +1,45 @@
 import '../css/Authentication.css'
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 function LogIn() {
-    // let history = useHistory();
+    const historyHook = useHistory();
     
     //Defining constants, when the user fills in the form, we assign the user's input values to these.
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
 
-    function submitForm() {
-      localStorage.setItem('username', username);
-      localStorage.setItem('password', password);
+    function submitForm(e) {
+      e.preventDefault()
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({email: username, password}),
+      };
+  
+      fetch("http://localhost:9000/users/login", options)
+        // turn api response into json
+        .then((res) => res.json())
+        .then((result) => {
+          if (result.errors) {
+            // do something about errors
+            // setErrors(result.errors);
+            return;
+          }
+  
+          // store their user id 
+          localStorage.setItem("userId", result.data.id)
+  
+          // navigate to the home screen
+          historyHook.push('/home')
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
     }
     
     return (

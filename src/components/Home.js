@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RecipeList from "./RecipeList";
 
-function Home({ authorized }) {
+function Home() {
   // setting error to null
   const [error, setError] = useState(null);
   // setting that response from api is not loaded yet
   const [isLoaded, setIsLoaded] = useState(false);
   // setting recipes to an empty array
   const [recipes, setRecipes] = useState([]);
+
+  const authorized = localStorage.getItem("userId")
+
+  const historyHook = useHistory()
+
 
   // Note: the empty deps array [] means
   // this useEffect react hook will run once
@@ -40,6 +45,11 @@ function Home({ authorized }) {
     }
   }, []);
 
+  const onLogOut = () => {
+    localStorage.removeItem("userId")
+    historyHook.push("/")
+  }
+
   if (!authorized) {
     return <Redirect to="/login" />;
   } else if (error) {
@@ -53,7 +63,7 @@ function Home({ authorized }) {
         <h1> Welcome to Cooking Chaos </h1>
         <br></br>
         <h2>Please pick your Kata.</h2>
-        <Link to="/">Log Out</Link>
+        <button onClick={onLogOut}>Log Out</button>
 
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}
         <RecipeList recipes={recipes} />
