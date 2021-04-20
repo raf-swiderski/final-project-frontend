@@ -4,25 +4,32 @@ import { Link } from "react-router-dom";
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList(props) {
   return (
-    <div>
+      <table>
+         <thead>
+          <tr>
+            <th>Recipe</th>
+            <th>Train</th>
+          </tr>
+        </thead>
+      <tbody>
       {props.recipes.map((recipe) => (
-        <Recipe
-          key={recipe.id.toString()}
-          title={recipe.recipe_name}
-          databaseId={recipe.recipe_id}
-        />
+         <tr key = {recipe.id.toString()}>
+          <td>{recipe.recipe_name}</td>
+          <td><button>Train</button></td>
+        </tr>
       ))}
-    </div>
+      </tbody>
+    </table>
   );
 }
 
-function Recipe(props) {
-  return (
-    <div>
-      <a href="">{props.title}</a>
-      <button>Train</button>
-    </div>
-  );
+// function Recipe(props) {
+//   return (
+//     <div>
+//       <a href="">{props.title}</a>
+//       <button>Train</button>
+//     </div>
+//   );
 
   // const clickRecipe =  async e => {
   //   e.preventDefault();
@@ -41,7 +48,7 @@ function Recipe(props) {
   //     console.error(err.message)
   //   }
   // }
-}
+// }
 
 
 

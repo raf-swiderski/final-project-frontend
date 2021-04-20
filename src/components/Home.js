@@ -21,19 +21,10 @@ function Home() {
           level: JSON.stringify(user_level)
         }};
 
-      fetch(`http://localhost:9000/`, options)
-        // turn api response into json
-        .then((res) => res.json())
-        .then((result) => {
-            // response from api is loaded
+      fetch(`http://localhost:9000/`, options).then((res) => res.json()).then((result) => {
             setIsLoaded(true);
-            console.log(result)
-            // assign results from api to recipes array (using react useState function)
             setRecipes(result.rows);
           },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
           (error) => {
             setIsLoaded(true);
             setError(error);
@@ -60,10 +51,12 @@ function Home() {
         <h1> Welcome to Cooking Chaos </h1>
         <br></br>
         <h2>Please pick your Kata.</h2>
-        <button onClick={onLogOut}>Log Out</button>
+        
 
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}
         <RecipeList recipes={recipes} />
+
+        <button onClick={onLogOut}>Log Out</button>
       </div>
     );
   }
