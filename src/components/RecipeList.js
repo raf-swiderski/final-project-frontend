@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
-function RecipeList(props) {
-  console.log(props)
-  const recipe_id = props.recipes.recipe_id
+function RecipeList({recipes}) {
+  console.log(recipes)
 
-  const clickRecipe =  async e => {
+  const clickRecipe =  async (e) => {
     e.preventDefault();
+
+    const recipe_id = e.currentTarget.value
+
     try {
       const recipeSteps = await fetch(
         `http://localhost:9000/recipe`,
@@ -33,10 +35,10 @@ function RecipeList(props) {
           </tr>
         </thead>
       <tbody>
-      {props.recipes.map((recipe) => (
+      {recipes.map((recipe) => (
          <tr key = {recipe.id.toString()}>
           <td>{recipe.recipe_name}</td>
-          <td><button onClick={clickRecipe}>Show</button></td>
+          <td><button value={recipe.recipe_id} onClick={clickRecipe}>Show</button></td>
         </tr>
       ))}
       </tbody>
