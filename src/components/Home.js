@@ -9,7 +9,7 @@ function Home() {
   const [recipes, setRecipes] = useState([]);
   const authorized = localStorage.getItem("userId")
   const historyHook = useHistory()
-  const user_level = 3; // to be replace with localStorage.getItem
+  const user_level = 2; // to be replace with localStorage.getItem
 
   useEffect(() => {
     if (authorized) {
