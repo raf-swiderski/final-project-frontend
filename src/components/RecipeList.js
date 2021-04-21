@@ -12,13 +12,13 @@ function RecipeList({recipes}) {
 
     try {
       const recipeSteps = await fetch(
-        `http://localhost:9000/recipe`,
+        `http://localhost:9000/recipe?recipe_id=${recipe_id}`,
         {
           method: 'GET',
           headers: { "Content-Type": "application/json",
-          recipe_id: JSON.stringify(recipe_id) 
+          // recipe_id: JSON.stringify(recipe_id) 
           }
-  
+  //
         }
       )
     } catch (err) {
