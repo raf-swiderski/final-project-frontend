@@ -16,7 +16,7 @@ function RecipeList({recipes}) {
         {
           method: 'GET',
           headers: { "Content-Type": "application/json",
-          // recipe_id: JSON.stringify(recipe_id) 
+          // recipe_id: JSON.stringify(recipe_id)
           }
   //
         }
@@ -25,7 +25,7 @@ function RecipeList({recipes}) {
       console.error(err.message)
     }
   }
-  
+
   return (
       <table>
          <thead>
@@ -39,6 +39,7 @@ function RecipeList({recipes}) {
          <tr key = {recipe.id.toString()}>
           <td>{recipe.recipe_name}</td>
           <td><button value={recipe.recipe_id} onClick={clickRecipe}>Show</button></td>
+          <td><button value={recipe.recipe_id} onClick={addPoints}>Mark as complete</button></td>
         </tr>
       ))}
       </tbody>
@@ -48,5 +49,3 @@ function RecipeList({recipes}) {
 
 // export recipeList component so that can be imported in other places
 export default RecipeList;
-
-
