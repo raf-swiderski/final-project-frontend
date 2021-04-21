@@ -3,17 +3,19 @@ import { Link } from "react-router-dom";
 
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({recipes}) {
-  // console.log(recipes)
+
+  const [recipeArray, setRecipeArray] = useState();
 
   //changing the users points in the database, possibly the level too 🙀  
-  function CompletedRecipe(recipeId) {
+  function CompletedRecipe(recipeId, recipe_api_id) {
   
     let currentPoints = parseInt(localStorage.getItem("points"))
   
     const data = {
       points: currentPoints,
       userId: localStorage.getItem("userId"),
-      recipeId: parseInt(recipeId)
+      recipeId: parseInt(recipeId),
+      recipeApiId: recipe_api_id
     };
   
   
@@ -37,9 +39,13 @@ function RecipeList({recipes}) {
         } 
         console.log(result)  
         // store their cooking level & points back in local storage
-          //localStorage.setItem("cookinglevel", result.data.cooking_level)
-          // localStorage.setItem("points", result.points)
-          
+        //localStorage.setItem("cookinglevel", result.data.cooking_level)
+        localStorage.setItem("points", result.points)
+        
+        
+        setRecipeArray(result.completed_recipes_array)
+        console.log(recipeArray)
+        
         })
         .catch((err) => {
           console.log(err);
@@ -66,7 +72,7 @@ function RecipeList({recipes}) {
             <td>{recipe.recipe_name}</td>
             <td>
               <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
-              <td><button value={recipe.recipe_id} onClick={() => CompletedRecipe(recipe.id)}>Mark as complete</button></td>
+              <td><button value={recipe.recipe_id} onClick={() => CompletedRecipe(recipe.id, recipe.recipe_id)}>Mark as complete</button></td>
             </td>
           </tr>
         ))}
