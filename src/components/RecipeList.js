@@ -17,7 +17,7 @@ function RecipeList({ recipes }) {
             <td>{recipe.id}</td>
             <td>{recipe.recipe_name}</td>
             <td>
-              <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
+              <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link>
             </td>
           </tr>
         ))}
