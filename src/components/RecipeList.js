@@ -6,13 +6,14 @@ function RecipeList({recipes}) {
   // console.log(recipes)
 
   //changing the users points in the database, possibly the level too 🙀  
-  function AddPoints() {
+  function CompletedRecipe(recipeId) {
   
     let currentPoints = parseInt(localStorage.getItem("points"))
   
     const data = {
       points: currentPoints,
-      userId: localStorage.getItem("userId")
+      userId: localStorage.getItem("userId"),
+      recipeId: recipeId
     };
   
   
@@ -34,8 +35,6 @@ function RecipeList({recipes}) {
           // return;
           console.log(result.errors)
         } 
-          console.log("this is the response from the backend")
-          console.log(result)
           // store their cooking level & points back in local storage
           //localStorage.setItem("cookinglevel", result.data.cooking_level)
           localStorage.setItem("points", result.points)
@@ -66,7 +65,7 @@ function RecipeList({recipes}) {
             <td>{recipe.recipe_name}</td>
             <td>
               <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
-              <td><button value={recipe.recipe_id} onClick={AddPoints}>Mark as complete</button></td>
+              <td><button value={recipe.recipe_id} onClick={() => CompletedRecipe(recipe.recipe_id)}>Mark as complete</button></td>
             </td>
           </tr>
         ))}
