@@ -8,7 +8,7 @@ function RecipeList({recipes}) {
   const clickRecipe =  async (e) => {
     e.preventDefault();
 
-    const recipe_id = e.currentTarget.value
+    const recipe_id = parseInt(e.currentTarget.value)
 
     try {
       const recipeSteps = await fetch(
