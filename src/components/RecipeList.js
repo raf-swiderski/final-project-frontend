@@ -11,16 +11,17 @@ function RecipeList({recipes}) {
     const recipe_id = parseInt(e.currentTarget.value)
 
     try {
-      const recipeSteps = await fetch(
+      const data = await fetch(
         `http://localhost:9000/recipe?recipe_id=${recipe_id}`,
         {
           method: 'GET',
           headers: { "Content-Type": "application/json",
-          // recipe_id: JSON.stringify(recipe_id) 
           }
-  //
         }
-      )
+      ) 
+    const recipeData = await data.json();
+    console.log(recipeData[0].steps) // this is my recipe steps array!
+
     } catch (err) {
       console.error(err.message)
     }
@@ -38,7 +39,7 @@ function RecipeList({recipes}) {
       {recipes.map((recipe) => (
          <tr key = {recipe.id.toString()}>
           <td>{recipe.recipe_name}</td>
-          <td><button value={recipe.recipe_id} onClick={clickRecipe}>Show</button></td>
+          <td><button href="/recipe/{recipe.recipe_id}" value={recipe.recipe_id} onClick={clickRecipe}>Show</button></td>
         </tr>
       ))}
       </tbody>
