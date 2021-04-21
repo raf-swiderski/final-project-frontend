@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import useState from "react";
 
-function addPoints() {
+function AddPoints() {
 
-  const currentPoints = { localStorage.getItem("points")}
-  const addPoints = { currentPoints += 50 }
+  const [errors, setErrors] = useState(null);
+
+  const currentPoints = localStorage.getItem("points")
+  const addPoints = currentPoints += 50
 
   const data = {
-        points: addPoints
+        points: addPoints,
         userId: localStorage.getItem("userId")
       };
 
@@ -20,16 +22,28 @@ function addPoints() {
   };
 
   fetch("http://localhost:9000", options)
-// turn api response into json
-.then((res) => res.json())
-.then((result) => {
-  if (result.errors) {
-    // do something about errors
-    setErrors(result.errors);
-    return;
-  }
+    // turn api response into json
+    .then((res) => res.json())
+    .then((result) => {
+      if (result.errors) {
+        // do something about errors
+        setErrors(result.errors);
+        return;
+      }
+        // store their user id
+        //localStorage.setItem("cookingLevel", result.data.cooking_level)
+        localStorage.setItem("points", result.data.points)
+
+        console.log(result)
+        // navigate to the home screen
+        // historyHook.push('/home')
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+     
 }
 
 
 
-export default addPoints
+export default AddPoints;

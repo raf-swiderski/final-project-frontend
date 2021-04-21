@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import AddPoints from './levelUp'
 
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({recipes}) {
@@ -39,7 +40,7 @@ function RecipeList({recipes}) {
          <tr key = {recipe.id.toString()}>
           <td>{recipe.recipe_name}</td>
           <td><button value={recipe.recipe_id} onClick={clickRecipe}>Show</button></td>
-          <td><button value={recipe.recipe_id} onClick={addPoints}>Mark as complete</button></td>
+          <td><button value={recipe.recipe_id} onClick={AddPoints}>Mark as complete</button></td>
         </tr>
       ))}
       </tbody>
