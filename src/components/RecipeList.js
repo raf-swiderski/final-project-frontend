@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({recipes}) {
 
-  const [recipeArray, setRecipeArray] = useState();
+  const [completedRecipeArray, setCompletedRecipeArray] = useState();
 
   //changing the users points in the database, possibly the level too 🙀  
   function CompletedRecipe(recipeId, recipe_api_id) {
@@ -43,8 +43,8 @@ function RecipeList({recipes}) {
         localStorage.setItem("points", result.points)
         
         
-        setRecipeArray(result.completed_recipes_array)
-        console.log(recipeArray)
+        setCompletedRecipeArray(result.completed_recipes_array)
+        console.log(completedRecipeArray)
         
         })
         .catch((err) => {
@@ -72,7 +72,8 @@ function RecipeList({recipes}) {
             <td>{recipe.recipe_name}</td>
             <td>
               <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
-              <td><button value={recipe.recipe_id} onClick={() => CompletedRecipe(recipe.id, recipe.recipe_id)}>Mark as complete</button></td>
+              {/* { recipeArray.includes(recipe.recipe_id) ? <td> Completed! </td> :  */}
+              <td><button value={recipe.recipe_id} onClick={() => CompletedRecipe(recipe.id, recipe.recipe_id)}>Mark as complete</button></td> 
             </td>
           </tr>
         ))}
@@ -80,6 +81,7 @@ function RecipeList({recipes}) {
     </table>
   );
 }
+
 
 // export recipeList component so that can be imported in other places
 export default RecipeList;
