@@ -6,7 +6,7 @@ function RecipeList({recipes}) {
   console.log(recipes)
 
   const clickRecipe =  async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
 
     const recipe_id = parseInt(e.currentTarget.value)
 
@@ -21,10 +21,11 @@ function RecipeList({recipes}) {
       ) 
     const recipeData = await data.json();
     console.log(recipeData[0].steps) // this is my recipe steps array!
-
+    const recipeSteps = recipeData[0].steps;
     } catch (err) {
       console.error(err.message)
     }
+    //redirect
   }
   
   return (
@@ -38,8 +39,13 @@ function RecipeList({recipes}) {
       <tbody>
       {recipes.map((recipe) => (
          <tr key = {recipe.id.toString()}>
+          <td>{recipe.id}</td>
           <td>{recipe.recipe_name}</td>
-          <td><button href="/recipe/{recipe.recipe_id}" value={recipe.recipe_id} onClick={clickRecipe}>Show</button></td>
+          <td><Link to={`/recipe/${recipe.id}`}>
+            <button value={recipe.id} onClick={clickRecipe}>
+              Show
+            </button>
+          </Link></td>
         </tr>
       ))}
       </tbody>
