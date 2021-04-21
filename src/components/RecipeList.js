@@ -4,7 +4,54 @@ import AddPoints from './levelUp'
 
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({recipes}) {
-  console.log(recipes)
+  // console.log(recipes)
+
+  //changing the users points in the database, possibly the level too 🙀  
+  function AddPoints() {
+  
+    let currentPoints = parseInt(localStorage.getItem("points"))
+
+    let addPoints = currentPoints + 50
+  
+    const data = {
+      points: addPoints,
+      userId: localStorage.getItem("userId")
+    };
+  
+  
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+  
+    fetch("http://localhost:9000", options)
+      // turn api response into json
+      .then((res) => res.json())
+      .then((result) => {
+        if (result.errors) {
+          // do something about errors
+          // setErrors(result.errors);
+          // return;
+          console.log(result.errors)
+        }
+
+          // store their cooking level & points back in local storage
+          localStorage.setItem("cookingLevel", result.data.level)
+          localStorage.setItem("points", result.data.points)
+          console.log("result of fetch request to change points/level:")
+          console.log(result)
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+
+  }
+  ////////////
+
+
 
   const clickRecipe =  async (e) => {
     e.preventDefault();
