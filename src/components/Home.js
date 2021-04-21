@@ -31,9 +31,6 @@ function Home() {
             // assign results from api to recipes array (using react useState function)
             setRecipes(result.rows);
           },
-          // Note: it's important to handle errors here
-          // instead of a catch() block so that we don't swallow
-          // exceptions from actual bugs in components.
           (error) => {
             setIsLoaded(true);
             setError(error);
@@ -67,6 +64,8 @@ function Home() {
 
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}
         <RecipeList recipes={recipes} />
+
+        <button onClick={onLogOut}>Log Out</button>
       </div>
     );
   }
