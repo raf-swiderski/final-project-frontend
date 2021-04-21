@@ -143,6 +143,7 @@ function Register() {
             <label for="cooking_level">Your cooking ability:</label>
               <select name="cooking_level" id="cooking_level" onChange={({ target }) => setCookingLevel(target.value)}
                 required>
+                  <option value="null">Select Cooking Level</option>
                   <option value="1">1(Rookie! 🥣)</option>
                   <option value="2">2</option>
                   <option value="3">3</option>
