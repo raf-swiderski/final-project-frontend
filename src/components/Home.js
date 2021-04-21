@@ -3,10 +3,6 @@ import { Redirect, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RecipeList from "./RecipeList";
 
-// function CookingLevel() {
-//   return cooking_level
-// }
-
 function Home() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -16,7 +12,7 @@ function Home() {
   const cooking_level = parseInt(localStorage.getItem("cookingLevel"));
   const points = parseInt(localStorage.getItem("points"));
   const username = localStorage.getItem("username");
-  // to be replace with localStorage.getItem
+ 
 
   useEffect(() => {
     if (authorized) {
@@ -27,7 +23,6 @@ function Home() {
           (result) => {
             // response from api is loaded
             setIsLoaded(true);
-            console.log(result);
             // assign results from api to recipes array (using react useState function)
             setRecipes(result.rows);
           },
