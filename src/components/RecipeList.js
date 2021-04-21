@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AddPoints from './levelUp'
 
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({recipes}) {
@@ -37,8 +36,6 @@ function RecipeList({recipes}) {
         } 
           console.log("this is the response from the backend")
           console.log(result)
-
-
           // store their cooking level & points back in local storage
           //localStorage.setItem("cookinglevel", result.data.cooking_level)
           localStorage.setItem("points", result.points)
@@ -48,30 +45,6 @@ function RecipeList({recipes}) {
           console.log(err);
         });
 
-  }
-  ////////////
-
-
-
-  const clickRecipe =  async (e) => {
-    e.preventDefault();
-
-    const recipe_id = parseInt(e.currentTarget.value)
-
-    try {
-      const recipeSteps = await fetch(
-        `http://localhost:9000/recipe?recipe_id=${recipe_id}`,
-        {
-          method: 'GET',
-          headers: { "Content-Type": "application/json",
-          // recipe_id: JSON.stringify(recipe_id)
-          }
-  //
-        }
-      )
-    } catch (err) {
-      console.error(err.message)
-    }
   }
 
   // what recipes has the current user completed ? what are their ids ?
@@ -84,16 +57,19 @@ function RecipeList({recipes}) {
           <tr>
             <th>Recipes</th>
             <th>Train</th>
-          </tr>
-        </thead>
-      <tbody>
-      {recipes.map((recipe) => (
-         <tr key = {recipe.id.toString()}>
-          <td>{recipe.recipe_name}</td>
-          <td><button value={recipe.recipe_id} onClick={clickRecipe}>Show</button></td>
-          <td><button value={recipe.recipe_id} onClick={AddPoints}>Mark as complete</button></td>
         </tr>
-      ))}
+      </thead>
+      <tbody>
+        {recipes.map((recipe) => (
+          <tr key={recipe.id.toString()}>
+            <td>{recipe.id}</td>
+            <td>{recipe.recipe_name}</td>
+            <td>
+              <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
+              <td><button value={recipe.recipe_id} onClick={AddPoints}>Mark as complete</button></td>
+            </td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
