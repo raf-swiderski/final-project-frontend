@@ -11,30 +11,23 @@ function Home() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [recipes, setRecipes] = useState([]);
-  const authorized = localStorage.getItem("userId")
-  const historyHook = useHistory()
+  const authorized = localStorage.getItem("userId");
+  const historyHook = useHistory();
   const cooking_level = parseInt(localStorage.getItem("cookingLevel"));
-  const points = parseInt(localStorage.getItem("points"))
-  const username = localStorage.getItem("username")
-   // to be replace with localStorage.getItem
+  const points = parseInt(localStorage.getItem("points"));
+  const username = localStorage.getItem("username");
+  // to be replace with localStorage.getItem
 
   useEffect(() => {
     if (authorized) {
-
-      const options = {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          level: JSON.stringify(cooking_level)
-        }};
-
-      fetch(`http://localhost:9000/`, options)
+      fetch(`http://localhost:9000/?level=${cooking_level}`)
         // turn api response into json
         .then((res) => res.json())
-        .then((result) => {
+        .then(
+          (result) => {
             // response from api is loaded
             setIsLoaded(true);
-            console.log(result)
+            console.log(result);
             // assign results from api to recipes array (using react useState function)
             setRecipes(result.rows);
           },
@@ -50,9 +43,9 @@ function Home() {
   }, []);
 
   const onLogOut = () => {
-    localStorage.clear()
-    historyHook.push("/")
-  }
+    localStorage.clear();
+    historyHook.push("/");
+  };
 
   if (!authorized) {
     return <Redirect to="/login" />;
