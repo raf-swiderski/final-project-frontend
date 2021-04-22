@@ -100,7 +100,7 @@ function LandingPage() {
               <input type="email" id="email" name="email" placeholder="john@smith.com" className="form-control"
               onChange={({ target }) => setEmail(target.value)} required/>
           
-
+              <br/>
           
               <input type="password" id="password" name="password" placeholder="password" className="form-control"
               onChange={({ target }) => setPassword(target.value)} required/>
@@ -109,7 +109,7 @@ function LandingPage() {
               <button type="submit" className="btn btn-primary btn-block" value="Log In">Submit</button>
                 
                 <p className="forgot-password text-right">
-                If you don't have an  account, please <a href="/register">Register</a>. 
+                If you don't have an  account, please <a href="/register" className="href">Register</a>. 
                 </p>
             </div>
           </form>
