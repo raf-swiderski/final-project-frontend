@@ -35,10 +35,9 @@ function RecipeList({recipes}) {
           // return;
           console.log(result.errors)
         } 
-        console.log(result)  
-        // store their cooking level & points back in local storage
+          // store their cooking level & points back in local storage
           //localStorage.setItem("cookinglevel", result.data.cooking_level)
-          // localStorage.setItem("points", result.points)
+          localStorage.setItem("points", result.points)
           
         })
         .catch((err) => {
