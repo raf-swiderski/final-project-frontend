@@ -169,6 +169,7 @@ text-align: center;
 .border {
   max-width: 25%;
   block-size: fit-content;
+  border-radius: 15px;
 }
 .instructions {
   width: 100%;
@@ -178,7 +179,6 @@ text-align: center;
   
   
 }
-
 
 .h4heading {
   text-align: left !important;
