@@ -16,10 +16,6 @@ function RecipePage(props) {
 
   // const [summary, setSummary] = useState("");
   // const [instructions, setInstructions] = useState("");
-  const styles = {
-    fontFamily: 'sans-serif',
-    textAlign: 'center',
-  };
   const cooking_level = parseInt(localStorage.getItem("cookingLevel"));
   const points = parseInt(localStorage.getItem("points"));
   const username = localStorage.getItem("username");
@@ -80,21 +76,31 @@ function RecipePage(props) {
           <div class="summary">
             <p>{Parse(recipe.summary || "")}</p>
           </div>
-          <div class="ingredients">
-          <h4 class="h4heading">Ingredients List</h4>
-      
-           {recipe.extendedIngredients.map((ingredient, index) => {
-            return <ul class="a" key={index}><li>{ingredient.original}</li></ul>;
-           })}
-           </div>
-           <div>
-            <br/>
-            <h4 class="h4heading">Instructions</h4>
-            <p>{Parse(recipe.instructions || "")}</p>
 
-            
+          <div class="container">
+            <div class="row">
+              <span class="border">
+                <div class=".col-6 .col-md-4">
+                  <div class="ingredients">
+                    <h4 class="h4heading">Ingredients List</h4>
+                      {recipe.extendedIngredients.map((ingredient, index) => {
+                        return <p class="a" key={index}>{ingredient.original}</p>;
+                      })}
+                  </div>
+                </div>
+              </span>
+              {/* <span class="border">  */}
+              <div class="col-12 col-md-8">
+                  <div class="instructions">
+                    <h4 class="h4heading">Instructions</h4>
+                    <p class="b">{Parse(recipe.instructions || "")}</p>
+                  </div>
+                </div>
+                {/* </span> */}
+              
+            </div>
           </div>
-        
+
       
     
         </div>

@@ -39,7 +39,7 @@ body, html, .App, #root, .auth-wrapper {
 
 .navbar-light {
   background-color: #cc0000;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
+  /* box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2); */
 }
 
 .auth-wrapper {
@@ -50,7 +50,7 @@ body, html, .App, #root, .auth-wrapper {
 }
 
 .auth-inner {
-  width: 850px;
+  width: 65%;
   margin: auto;
   background: #ffffff;
   box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
@@ -103,12 +103,6 @@ a:hover {
    color: #cc0000 !important; 
 }
 
- img {
-  
- height: 350px;
- width: 150px;
- 
- }
 
 .train {
   text-align: center;
@@ -122,8 +116,6 @@ a:hover {
 
 .table {
   text-align: center !important;
-  padding-top: 7775px;
-   position: relatve;
 }
 
 /* .scroll {
@@ -138,7 +130,8 @@ a:hover {
 }
 
 .stretchy {
-width: 65%; 
+width: 45%;
+height: 80%; 
 text-align: center;
 border-radius: 15%;
 
@@ -156,7 +149,7 @@ text-align: center;
 }
 
 .summary {
-  padding-top: 50px;
+  padding-top: 20px;
 }
 
 .btn {
@@ -165,16 +158,63 @@ text-align: center;
 
 .ingredients {
   text-align: left !important;
+  border-color: #cc0000 !important;
+  font-weight: normal;
+  max-height: 100%;
+  /* max-width: 75%; */
+  /* margin: 20px 0;  */
+  
 }
+
+.border {
+  max-width: 25%;
+  block-size: fit-content;
+}
+.instructions {
+  width: 100%;
+  padding-left: 30px;
+  /* flex-flow: row nowrap; /*change this
+  align-items: flex-start;  */
+  
+  
+}
+
 
 .h4heading {
   text-align: left !important;
+  padding-left: 9px;
+  padding-top: 9px;
 }
 
-ul.a {
+.a {
   list-style: none;
+  padding: 5px;
+  margin: 20px 0;
+  white-space: normal;
+
 }
 
+.b {
+  width: 100%;
+  margin: 20px 0;
+}
+
+ol {
+  /* list-style: circle; */
+  padding-left: 10px;
+  text-align: left !important;
+  /* line-height: 1.2cm !important; */
+  width: 100%;
+}
+
+p {
+  text-align: left !important;
+}
+
+li {
+  margin: 20px 0;
+}
+/* 
 
 ul li::before {
   content: "\2022";
@@ -182,12 +222,10 @@ ul li::before {
   list-style-type: circle;
   font-weight: bold;
   display: inline-block; 
-  width: 1em;
-  margin-left: -1em;
+  width: 0em;
+  margin-left: -2em;
   
-}
-
-
+} */
 
 td {
   text-align: center !important;
@@ -214,6 +252,5 @@ td {
     border-color: #cc0000 !important;
     background-color: #cc0000;
     font-weight: bold;
-
 }
 
