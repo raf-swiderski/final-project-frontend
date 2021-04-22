@@ -13,10 +13,10 @@ const calculateLevel = (points) => {
 function Home() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [cooking_level, setCookingLevel] = useState(parseInt(localStorage.getItem("cookingLevel")));
   const [recipes, setRecipes] = useState({});
   const authorized = localStorage.getItem("userId");
   const historyHook = useHistory();
-  const cooking_level = parseInt(localStorage.getItem("cookingLevel"));
   const [points, setPoints] = useState(parseInt(localStorage.getItem("points")));
   const username = localStorage.getItem("username");
  
@@ -54,6 +54,7 @@ function Home() {
   const onRecipeCompleted = (data) => {
     setRecipes(data.recipes)
     setPoints(data.points)
+    setCookingLevel(data.cooking_level)
   }
 
   const onLogOut = () => {

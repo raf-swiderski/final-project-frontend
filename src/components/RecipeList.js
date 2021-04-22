@@ -8,13 +8,13 @@ function RecipeList({ recipes, onRecipeCompleted }) {
   //changing the users points in the database, possibly the level too 🙀
   function CompletedRecipe(recipeId, recipe_api_id) {
     let currentPoints = parseInt(localStorage.getItem("points"));
-
+    let currentLevel = localStorage.getItem("cookingLevel")
     const data = {
       points: currentPoints,
       userId: localStorage.getItem("userId"),
       recipeId: parseInt(recipeId),
       recipeApiId: recipe_api_id,
-      cookingLevel: localStorage.getItem("cookingLevel")
+      cookingLevel: currentLevel
     };
 
     const options = {
@@ -45,18 +45,14 @@ function RecipeList({ recipes, onRecipeCompleted }) {
             ...recipes,
             completed: result.completed_recipes_array,
           },
-          points: result.points
+          points: result.points,
+          cooking_level: result.cooking_level
         });
       })
       .catch((err) => {
         console.log(err);
       });
   }
-
-  // what recipes has the current user completed ? what are their ids ?
-  // const completedRecipeIds = [ ... ]
-  // recipes.filter((recipe) => completedRecipeIds.includes(recipe.id)).map((recipe)
-
   return (
     <table>
       <thead>
@@ -75,7 +71,7 @@ function RecipeList({ recipes, onRecipeCompleted }) {
               <td>
                 <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
                 {recipes.completed.includes(recipe.recipe_id) ? (
-                  <td> Completed! </td>
+                  <td><span>&#10003;</span></td>
                 ) : (
                   <td>
                     <button
