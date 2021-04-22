@@ -52,6 +52,14 @@ function RecipeList({recipes}) {
   // recipes.filter((recipe) => completedRecipeIds.includes(recipe.id)).map((recipe) 
 
   return (
+    // <div className="tablediv">
+      <table> 
+      {/* // <className="table"> */}
+      <thead>
+        <tr>
+          <th></th>
+          <th>Recipes</th>
+          <th className="train">Train</th>
       <table>
          <thead>
           <tr>
@@ -65,6 +73,9 @@ function RecipeList({recipes}) {
             <td>{recipe.id}</td>
             <td>{recipe.recipe_name}</td>
             <td>
+
+              <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> Show</Link>
+
               <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link>
               <td><button value={recipe.recipe_id} onClick={AddPoints}>Mark as complete</button></td>
             </td>
@@ -72,6 +83,7 @@ function RecipeList({recipes}) {
         ))}
       </tbody>
     </table>
+    // </div>
   );
 }
 
