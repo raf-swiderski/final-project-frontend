@@ -13,6 +13,7 @@ function RecipePage(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [recipe, setRecipe] = useState({});
+
   // const [summary, setSummary] = useState("");
   // const [instructions, setInstructions] = useState("");
   const styles = {
@@ -34,15 +35,12 @@ function RecipePage(props) {
       .then((res) => res.json())
       .then(
         (result) => {
-          setIsLoaded(true);
-          console.log(result);
           setRecipe(result);
-          // setSummary(result.summary);
-          // setInstructions(result.instructions);
+          setIsLoaded(true);
         },
         (error) => {
-          setIsLoaded(true);
           setError(error);
+          setIsLoaded(true);
         }
       );
   }, []);
@@ -85,6 +83,21 @@ function RecipePage(props) {
       </div>
     );
   }
+  }
+  return (
+    <div>
+      <h1>{recipe.title}</h1>
+      <img alt={recipe.title} src={recipe.image} />
+      <div>
+        Ingredients:
+        {recipe.extendedIngredients.map((ingredient, index) => {
+          return <div key={index}>{ingredient.original}</div>;
+        })}
+      </div>
+      {/* <p>{Parse(recipe.summary || "")}</p> */}
+      <div>{Parse(recipe.instructions)}</div>
+    </div>
+  );
 }
 
 export default RecipePage;

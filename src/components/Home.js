@@ -5,10 +5,6 @@ import RecipeList from "./RecipeList";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faOctopusDeploy } from '@fortawesome/free-brands-svg-icons'
 
-// function CookingLevel() {
-//   return cooking_level
-// }
-
 function Home() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -18,7 +14,7 @@ function Home() {
   const cooking_level = parseInt(localStorage.getItem("cookingLevel"));
   const points = parseInt(localStorage.getItem("points"));
   const username = localStorage.getItem("username");
-  // to be replace with localStorage.getItem
+ 
 
   useEffect(() => {
     if (authorized) {
@@ -27,15 +23,12 @@ function Home() {
         .then((res) => res.json())
         .then(
           (result) => {
-            // response from api is loaded
-            setIsLoaded(true);
-            console.log(result);
-            // assign results from api to recipes array (using react useState function)
             setRecipes(result.rows);
+            setIsLoaded(true);
           },
           (error) => {
-            setIsLoaded(true);
             setError(error);
+            setIsLoaded(true);
           }
         );
     }
