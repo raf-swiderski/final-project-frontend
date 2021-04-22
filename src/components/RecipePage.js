@@ -52,7 +52,7 @@ function RecipePage(props) {
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
-            <Link className="btn btn-outline-light" to="/home"><FontAwesomeIcon icon={faOctopusDeploy } size='2x'/></Link>
+            <Link className="btn btn-outline-light" to="/home"><FontAwesomeIcon icon={faOctopusDeploy } size='2x'/>CookWars</Link>
             <form class="container-fluid justify-content-end">
               <p className="btn btn-outline-light">Username: {username}</p>
               <p className="btn btn-outline-light"> Cooking Level: {cooking_level} </p>
@@ -63,41 +63,35 @@ function RecipePage(props) {
         </nav>
       
    
-      <div class="recipe scroll">
-        <div class="title">
-          <h1>{recipe.title} </h1>
-        </div>
-        <div class="container">
-          <img alt={recipe.title} src={recipe.image} className="stretchy"/>
-        </div>
-        {/* response is HTML so we need to parse it */}
-        {/* this is saying that at the time this was rendered, recipe.summary doesn't exist*/}
-        <div class="summary">
-          <p>{Parse(recipe.summary || "")}</p>
-          <div style={styles}>
-  
+        <div class="recipe scroll">
+          <div class="title">
+            <h1>{recipe.title} </h1>
           </div>
+          <div class="container">
+            <img alt={recipe.title} src={recipe.image} className="stretchy"/>
+          </div>
+          {/* response is HTML so we need to parse it */}
+          {/* this is saying that at the time this was rendered, recipe.summary doesn't exist*/}
+          <div class="summary">
+            <p>{Parse(recipe.summary || "")}</p>
+          </div>
+          <p>{Parse(recipe.instructions || "")}</p>
+
         </div>
-        <p>{Parse(recipe.instructions || "")}</p>
+        
+      
+      
+      <div id="floating">
+        <div id="sidebar">
+          {recipe.extendedIngredients.map((ingredient, index) => {
+            return <div key={index}>{ingredient.original}</div>;
+          })}
+        </div>
       </div>
-      </div>
-    );
+   </div> 
+   );
   }
   }
-  return (
-    <div>
-      <h1>{recipe.title}</h1>
-      <img alt={recipe.title} src={recipe.image} />
-      <div>
-        Ingredients:
-        {recipe.extendedIngredients.map((ingredient, index) => {
-          return <div key={index}>{ingredient.original}</div>;
-        })}
-      </div>
-      {/* <p>{Parse(recipe.summary || "")}</p> */}
-      <div>{Parse(recipe.instructions)}</div>
-    </div>
-  );
-}
+ 
 
 export default RecipePage;

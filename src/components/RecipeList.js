@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare, faEye } from '@fortawesome/free-regular-svg-icons';
 
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({recipes}) {
@@ -60,11 +62,6 @@ function RecipeList({recipes}) {
           <th></th>
           <th>Recipes</th>
           <th className="train">Train</th>
-      <table>
-         <thead>
-          <tr>
-            <th>Recipes</th>
-            <th>Train</th>
         </tr>
       </thead>
       <tbody>
@@ -74,16 +71,16 @@ function RecipeList({recipes}) {
             <td>{recipe.recipe_name}</td>
             <td>
 
-              <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> Show</Link>
+              <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> <FontAwesomeIcon icon={faEye} size='2x'/></Link>
 
-              <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link>
-              <td><button value={recipe.recipe_id} onClick={AddPoints}>Mark as complete</button></td>
+              {/* <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link> */}
+              <Link value={recipe.recipe_id} onClick={AddPoints} className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='2x'/></Link>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
-    // </div>
+   
   );
 }
 
