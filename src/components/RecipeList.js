@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({ recipes }) {
   return (
-    <table>
+    // <div className="tablediv">
+      <table> 
+      {/* // <className="table"> */}
       <thead>
         <tr>
           <th></th>
@@ -24,6 +26,7 @@ function RecipeList({ recipes }) {
         ))}
       </tbody>
     </table>
+    // </div>
   );
 }
 

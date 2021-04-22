@@ -109,6 +109,16 @@ a {
   text-align: center;
 }
 
+.tablediv {
+  width: 100%;
+  max-height: 90vh;
+  /* padding-top: 55px;  */
+}
+
+.table {
+  text-align: center !important;
+}
+
 /* .scroll {
     overflow: auto;
     height: 80%;
