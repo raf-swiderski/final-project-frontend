@@ -55,36 +55,38 @@ function RecipeList({recipes}) {
 
   return (
     // <div className="tablediv">
-    <div class="stick">
+    
+      <div>
+        <div>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <h1> Welcome to Cookwars </h1>
+          <br/>
+        </div>
+
+
       <table class="table">
-      {/* // <className="table"> */}
-      <thead>
-        <tr>
-          
-          <th scope="col">Recipes</th>
-          <th className="train">Train</th>
-        </tr>
-      </thead>
-      <tbody>
-        {recipes.map((recipe) => (
-          <tr key={recipe.id.toString()}>
-            {/* <td>{recipe.id}</td> */}
-            <td>{recipe.recipe_name}</td>
-            <td>
-
-              <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> <FontAwesomeIcon icon={faEye} size='1x'/></Link>
-
-              {/* <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link> */}
-              <Link value={recipe.recipe_id} onClick={AddPoints} className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='1x'/></Link>
-            </td>
+        <thead>
+          <tr class="bg-red">
+            <th className="train">Recipes</th>
+            <th className="train">Train</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
-    </div>
-   
+        </thead>
+        <tbody>
+          {recipes.map((recipe) => (
+            <tr key={recipe.id.toString()}>
+              {/* <td>{recipe.id}</td> */}
+              <td>{recipe.recipe_name}</td>
+              <td>
+                <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> <FontAwesomeIcon icon={faEye} size='1x'/></Link>
+                {/* <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link> */}
+                <Link value={recipe.recipe_id} onClick={AddPoints} className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='1x'/></Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      </div>
   );
 }
-
 // export recipeList component so that can be imported in other places
 export default RecipeList;

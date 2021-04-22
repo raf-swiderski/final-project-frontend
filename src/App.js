@@ -30,7 +30,7 @@ function App() {
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
           
-          <Link className="btn btn-outline-light" to="/home"><FontAwesomeIcon icon={faOctopusDeploy } size='2x'/>CookWars</Link>
+          <Link className="btn btn-outline-light" to="/home"><FontAwesomeIcon icon={faOctopusDeploy } size='2x'/>Cookwars</Link>
           <form class="container-fluid justify-content-end">
           <Link className="btn btn-outline-light" to="/login">Login</Link>
           <Link class="btn btn-outline-light" to="/register">Sign up</Link>
