@@ -27,13 +27,16 @@ function RecipePage(props) {
   }
   return (
     <div>
-      <h1>{recipe.title} Detailed Instruction</h1>
+      <h1>{recipe.title}</h1>
       <img alt={recipe.title} src={recipe.image} />
-      <p>{recipe.extendedIngredients[0].name}</p>
-      {/* response is HTML so we need to parse it */}
-      {/* this is saying that at the time this was rendered, recipe.summary doesn't exist*/}
-      <p>{Parse(recipe.summary || "")}</p>
-      <p>{Parse(recipe.instructions || "")}</p>
+      <div>
+        Ingredients:
+        {recipe.extendedIngredients.map((ingredient, index) => {
+          return <div key={index}>{ingredient.original}</div>;
+        })}
+      </div>
+      {/* <p>{Parse(recipe.summary || "")}</p> */}
+      <div>{Parse(recipe.instructions)}</div>
     </div>
   );
 }
