@@ -75,20 +75,26 @@ function RecipePage(props) {
           <div class="summary">
             <p>{Parse(recipe.summary || "")}</p>
           </div>
-          <p>{Parse(recipe.instructions || "")}</p>
+          <div class="ingredients">
+          <h4 class="h4heading">Ingredients List</h4>
+      
+           {recipe.extendedIngredients.map((ingredient, index) => {
+            return <ul class="a" key={index}><li>{ingredient.original}</li></ul>;
+           })}
+           </div>
+           <div>
+            <br/>
+            <h4 class="h4heading">Instructions</h4>
+            <p>{Parse(recipe.instructions || "")}</p>
 
-        </div>
+            
+          </div>
         
       
-      
-      <div id="floating">
-        <div id="sidebar">
-          {recipe.extendedIngredients.map((ingredient, index) => {
-            return <div key={index}>{ingredient.original}</div>;
-          })}
+    
         </div>
       </div>
-   </div> 
+  
    );
   }
   }

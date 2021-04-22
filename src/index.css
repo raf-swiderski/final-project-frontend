@@ -155,39 +155,27 @@ text-align: center;
 .btn {
   margin: 5px;
 }
-/* .forgot-password,
-.forgot-password a {
-  text-align: right;
-  font-size: 13px;
-  padding-top: 10px;
-  color: #7f7d7d;
-  margin: 0;
+
+.ingredients {
+  text-align: left !important;
 }
 
-.forgot-password a {
-  color: #167bff; */
-
-#sidebar {
-  display: inline-block; 
-  position: absolute; 
-  width: 100px;
-
-
-  /* width: 250px;
-  margin: auto;
-  background: #ffffff;
-  box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.2);
-  padding: 40px 55px 45px 55px;
-  border-radius: 15px;
-  transition: all .3s;
-  left */
-
+.h4heading {
+  text-align: left !important;
 }
 
-#floating {
-  position: relative; 
+ul.a {
+  list-style: none;
+}
+
+
+ul li::before {
+  content: "\2022";
+  color: #cc0000;
+  list-style-type: circle;
+  font-weight: bold;
   display: inline-block; 
-  width: 0; 
-  height: 0; 
-  vertical-align: top;
+  width: 1em;
+  margin-left: -1em;
+  
 }
