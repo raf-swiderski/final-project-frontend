@@ -14,6 +14,7 @@ function RecipeList({ recipes, onRecipeCompleted }) {
       userId: localStorage.getItem("userId"),
       recipeId: parseInt(recipeId),
       recipeApiId: recipe_api_id,
+      cookingLevel: localStorage.getItem("cookingLevel")
     };
 
     const options = {

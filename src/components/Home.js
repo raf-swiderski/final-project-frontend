@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 import RecipeList from "./RecipeList";
 
 const calculateLevel = (points) => {
-  return Math.floor(points / 50);
+  const level = Math.floor(points / 100)
+
+  localStorage.setItem("cookingLevel", level)
+  return level;
 }
 
 function Home() {
