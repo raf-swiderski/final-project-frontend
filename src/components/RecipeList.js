@@ -7,8 +7,9 @@ function RecipeList({ recipes }) {
     <table>
       <thead>
         <tr>
+          <th></th>
           <th>Recipes</th>
-          <th>Train</th>
+          <th className="train">Train</th>
         </tr>
       </thead>
       <tbody>

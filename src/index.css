@@ -105,6 +105,10 @@ a {
  
  }
 
+.train {
+  text-align: center;
+}
+
 /* .scroll {
     overflow: auto;
     height: 80%;
