@@ -1,7 +1,10 @@
-import '../css/Authentication.css'
+import "../index.css";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { fontAwesomeIcons } from "@fortawesome/react-fontawesome";
+
+
 
 const UNAUTHORIZED_ERROR = "Unauthorized";
 const INTERNAL_SERVER_ERROR = "Internal Server Error"
@@ -78,11 +81,10 @@ function LogIn() {
         });
 
     }
-
     return (
-      <div>
-        <div>
-          <h1>Login Page</h1>
+      <div className="form-group">
+        <div className="form-group">
+        <h3>Sign In</h3>
           
           {errors && (
             <div>
@@ -91,27 +93,31 @@ function LogIn() {
               ))}
             </div>
           )}
-         
-          <form onSubmit={submitForm}>
-          <div>
-              <input type="text" id="email" name="email" placeholder="john@smith.com"
-              onChange={({ target }) => setEmail(target.value)} required/>
-          </div>
-          <div>
-              <input type="password" id="password" name="password" placeholder="password"
-              onChange={({ target }) => setPassword(target.value)} required/>
-          </div>
-          <input type="submit" value="Log In"/>
-          </form>
-
-          <div>If you don't have an  account, please register.</div>
-          <Link to="/register">Register</Link>
-          <ul>
-          </ul>
-        </div>
       </div>
+
+        
+          <form onSubmit={submitForm}>
+            <div className="form-group">
+              <input type="email" id="email" name="email" placeholder="john@smith.com" className="form-control"
+              onChange={({ target }) => setEmail(target.value)} required/>
+          
+          <br/>
+          
+              <input type="password" id="password" name="password" placeholder="password" className="form-control"
+              onChange={({ target }) => setPassword(target.value)} required/>
+          
+          <br/>
+              <button type="submit" className="btn btn-primary btn-block" value="Log In">Submit</button>
+                
+                <p className="forgot-password text-right">
+                If you don't have an  account, please <a href="/register" className="href">Register</a>. 
+                </p>
+            </div>
+          </form>
+          </div>
     );
   };
 
 
   export default LogIn
+   

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RecipeList from "./RecipeList";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faOctopusDeploy } from '@fortawesome/free-brands-svg-icons'
 
 // function CookingLevel() {
 //   return cooking_level
@@ -52,21 +54,33 @@ function Home() {
     return <div>Loading...</div>;
   } else {
     return (
+      <div className="App">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <Link className="btn btn-outline-light" to="/home"><FontAwesomeIcon icon={faOctopusDeploy } size='2x'/></Link>
+          <form class="container-fluid justify-content-end">
+          <p className="btn btn-outline-light">Username: {username}</p>
+          <p className="btn btn-outline-light"> Cooking Level: {cooking_level} </p>
+          <p className="btn btn-outline-light"> Points: {points} </p>
+          <button className="btn btn-outline-light" onClick={onLogOut}>Log Out</button>
+
+
+          
+          
+          </form>
+        </div>
+      </nav>
+     
       <div>
         <title>Home</title>
         <h1> Welcome to Cooking Chaos </h1>
         <br></br>
-        <h2>Please pick your Kata.</h2>
-        <h3>Cooking Level: {cooking_level} </h3>
-        <h3>Points: {points} </h3>
-        <h3>Username: {username} </h3>
-        <button onClick={onLogOut}>Log Out</button>
-
+      
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}
         <RecipeList recipes={recipes} />
 
-        <button onClick={onLogOut}>Log Out</button>
       </div>
+    </div>
     );
   }
 }
