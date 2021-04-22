@@ -21,14 +21,12 @@ function Home() {
         .then((res) => res.json())
         .then(
           (result) => {
-            // response from api is loaded
-            setIsLoaded(true);
-            // assign results from api to recipes array (using react useState function)
             setRecipes(result.rows);
+            setIsLoaded(true);
           },
           (error) => {
-            setIsLoaded(true);
             setError(error);
+            setIsLoaded(true);
           }
         );
     }

@@ -65,7 +65,7 @@ function RecipeList({recipes}) {
             <td>{recipe.id}</td>
             <td>{recipe.recipe_name}</td>
             <td>
-              <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
+              <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link>
               <td><button value={recipe.recipe_id} onClick={AddPoints}>Mark as complete</button></td>
             </td>
           </tr>
