@@ -55,31 +55,33 @@ function RecipeList({recipes}) {
 
   return (
     // <div className="tablediv">
-      <table> 
+    <div class="stick">
+      <table class="table">
       {/* // <className="table"> */}
       <thead>
         <tr>
-          <th></th>
-          <th>Recipes</th>
+          
+          <th scope="col">Recipes</th>
           <th className="train">Train</th>
         </tr>
       </thead>
       <tbody>
         {recipes.map((recipe) => (
           <tr key={recipe.id.toString()}>
-            <td>{recipe.id}</td>
+            {/* <td>{recipe.id}</td> */}
             <td>{recipe.recipe_name}</td>
             <td>
 
-              <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> <FontAwesomeIcon icon={faEye} size='2x'/></Link>
+              <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> <FontAwesomeIcon icon={faEye} size='1x'/></Link>
 
               {/* <Link to={`/recipe/${recipe.recipe_id}`}>Show</Link> */}
-              <Link value={recipe.recipe_id} onClick={AddPoints} className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='2x'/></Link>
+              <Link value={recipe.recipe_id} onClick={AddPoints} className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='1x'/></Link>
             </td>
           </tr>
         ))}
       </tbody>
     </table>
+    </div>
    
   );
 }

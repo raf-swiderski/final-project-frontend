@@ -23,6 +23,7 @@ body {
   display: flex;
   font-weight: 400;
   font-family: 'Fira Sans', sans-serif;
+  padding-top: 10%;
 }
 
 h1,h2,h3,h4,h5,h6,label,span {
@@ -117,6 +118,8 @@ a {
 
 .table {
   text-align: center !important;
+  padding-top: 7775px;
+   position: relatve;
 }
 
 /* .scroll {
@@ -144,7 +147,7 @@ text-align: center;
 .recipe {
    max-height: 90vh;
    overflow: auto;
-   padding-top: 75px;
+   /* padding-top: 75px; */
    position: relatve;
 }
 
@@ -178,4 +181,12 @@ ul li::before {
   width: 1em;
   margin-left: -1em;
   
+}
+
+
+
+td {
+  text-align: center !important;
+  vertical-align: middle !important;
+  height: 50px;
 }
