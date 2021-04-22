@@ -28,24 +28,15 @@ function Home() {
         .then((res) => res.json())
         .then(
           (result) => {
+
+             // assign results from api to recipes array (using react useState function)
+            setRecipes(result);
             // response from api is loaded
             setIsLoaded(true);
-            // assign results from api to recipes array (using react useState function)
-            setRecipes(result);
-
-            // result
-            /* 
-            recipes = {
-                completed: completed_recipes_array,
-                recipes: recipes.rows
-            }
-            */
-            // List of recipes
-            // List of recipes, a list of the users completed recipes
           },
           (error) => {
-            setIsLoaded(true);
             setError(error);
+            setIsLoaded(true);
           }
         );
     }
