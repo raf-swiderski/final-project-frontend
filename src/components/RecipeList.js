@@ -58,17 +58,18 @@ function RecipeList({ recipes, onRecipeCompleted }) {
   return (
     
       <div>
-        <div>
-          <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+        <br></br>
+        <div> 
+          <br/><br/>
           <h1> Welcome to Cookwars </h1>
-          <br/>
         </div>
       
 
 
-      <table class="table">
-        <thead>
-          <tr class="bg-red">
+      <table class="table mt-5">
+        <thead class="mx-auto">
+          <tr class="bg-red mx-auto">
+          <th className="train"></th>
             <th className="train">Recipes</th>
             <th className="train">Train</th>
           </tr>
@@ -85,14 +86,14 @@ function RecipeList({ recipes, onRecipeCompleted }) {
                 {recipes.completed.includes(recipe.recipe_id) ? (
                   <td><span>&#10003;</span></td>
                 ) : (
-                  <td>
+                  
                     <Link
                       value={recipe.recipe_id}
                       onClick={() =>
                         CompletedRecipe(recipe.id, recipe.recipe_id)
                       } className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='1x'/>
                     </Link>
-                  </td>
+                  
                 )}
               </td>
             </tr>
