@@ -20,7 +20,6 @@ function RecipePage(props) {
   const cooking_level = parseInt(localStorage.getItem("cookingLevel"));
   const points = parseInt(localStorage.getItem("points"));
   const username = localStorage.getItem("username");
-  const historyHook = useHistory();
 
  const onLogOut = () => {
     localStorage.clear();
@@ -49,7 +48,8 @@ function RecipePage(props) {
   if (!isLoaded) {
     return <div>Loading...</div>;
   } else {
-    return (    
+    return (   
+      <div> 
       <div className="App">
         <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
@@ -110,7 +110,7 @@ function RecipePage(props) {
     
         </div>
       </div>
-      <button onClick={backHome}>Back</button>
+      <button className="btn btn-danger" onClick={backHome}>Back</button>
     </div>
   );
 }

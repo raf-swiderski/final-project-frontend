@@ -63,6 +63,7 @@ function RecipeList({ recipes, onRecipeCompleted }) {
           <h1> Welcome to Cookwars </h1>
           <br/>
         </div>
+      
 
 
       <table class="table">
@@ -90,7 +91,6 @@ function RecipeList({ recipes, onRecipeCompleted }) {
                       onClick={() =>
                         CompletedRecipe(recipe.id, recipe.recipe_id)
                       } className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='1x'/>
-                      Mark as complete
                     </Link>
                   </td>
                 )}
@@ -99,6 +99,7 @@ function RecipeList({ recipes, onRecipeCompleted }) {
           ))}
       </tbody>
     </table>
+    </div>
   );
 }
 // export recipeList component so that can be imported in other places
