@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Redirect, useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import RecipeList from "./RecipeList";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faOctopusDeploy } from '@fortawesome/free-brands-svg-icons'
 
 const calculateLevel = (points) => {
   const level = Math.floor(points / 100)
@@ -61,6 +63,19 @@ function Home() {
     return <div>Loading...</div>;
   } else {
     return (
+      <div className="App">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <Link className="btn btn-outline-light" to="/home"><FontAwesomeIcon icon={faOctopusDeploy } size='2x'/> Cookwars</Link>
+          <form class="container-fluid justify-content-end">
+            <p className="btn btn-outline-light">Username: {username}</p>
+            <p className="btn btn-outline-light"> Cooking Level: {cooking_level} </p>
+            <p className="btn btn-outline-light"> Points: {points} </p>
+            <button className="btn btn-outline-light" onClick={onLogOut}>Log Out</button>
+          </form>
+        </div>
+      </nav>
+     
       <div>
         <title>Home</title>
         <h1> Welcome to Cooking Chaos </h1>
@@ -73,8 +88,8 @@ function Home() {
 
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}
         <RecipeList recipes={recipes} onRecipeCompleted={onRecipeCompleted} />
-
       </div>
+    </div>
     );
   }
 }

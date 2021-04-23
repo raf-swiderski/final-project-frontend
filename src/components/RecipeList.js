@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckSquare, faEye } from '@fortawesome/free-regular-svg-icons';
 
 // this is a function(component) which takes one argument-->props=properties (array of recipes)
 function RecipeList({ recipes, onRecipeCompleted }) {
@@ -54,14 +56,23 @@ function RecipeList({ recipes, onRecipeCompleted }) {
       });
   }
   return (
-    <table>
-      <thead>
-        <tr>
-          <th>Recipes</th>
-          <th>Train</th>
-        </tr>
-      </thead>
-      <tbody>
+    
+      <div>
+        <div>
+          <br/><br/><br/><br/><br/><br/><br/><br/><br/>
+          <h1> Welcome to Cookwars </h1>
+          <br/>
+        </div>
+
+
+      <table class="table">
+        <thead>
+          <tr class="bg-red">
+            <th className="train">Recipes</th>
+            <th className="train">Train</th>
+          </tr>
+        </thead>
+        <tbody>
         {recipes &&
           recipes.recipes &&
           recipes.recipes.map((recipe) => (
@@ -69,19 +80,18 @@ function RecipeList({ recipes, onRecipeCompleted }) {
               <td>{recipe.id}</td>
               <td>{recipe.recipe_name}</td>
               <td>
-                <Link to={`/recipe/${recipe.recipe_id}`}> Show</Link>
+                <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> <FontAwesomeIcon icon={faEye} size='1x'/></Link>
                 {recipes.completed.includes(recipe.recipe_id) ? (
                   <td><span>&#10003;</span></td>
                 ) : (
                   <td>
-                    <button
+                    <Link
                       value={recipe.recipe_id}
                       onClick={() =>
                         CompletedRecipe(recipe.id, recipe.recipe_id)
-                      }
-                    >
+                      } className="btn btn-primary href"><FontAwesomeIcon icon={faCheckSquare} size='1x'/>
                       Mark as complete
-                    </button>
+                    </Link>
                   </td>
                 )}
               </td>
@@ -91,6 +101,5 @@ function RecipeList({ recipes, onRecipeCompleted }) {
     </table>
   );
 }
-
 // export recipeList component so that can be imported in other places
 export default RecipeList;

@@ -64,106 +64,95 @@ function Register() {
       });
   }
 
-  return (
-    <div>
-      <title>Register</title>
-      <h1>Create An Account</h1>
-      <br></br>
-
-      {errors && (
-        <div>
-          {errors.map((error, index) => (
-            <p key={`error-${index}`}>{error.message}</p>
-          ))}
+    return (
+      <div className="form-group">
+        <div className="form-group">
+          
+          <h3>Create An Account</h3>
+          {errors && (
+            <div>
+              {errors.map((error, index) => (
+              <p key={`error-${index}`}>{error.message}</p>
+              ))}
+            </div>
+          )}
         </div>
-      )}
 
-      <div>
-        <div>
+        
           <form onSubmit={submitForm}>
-            <div>
-            <label for="name">Name:</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Name"
-                onChange={({ target }) => setName(target.value)}
-                required
-              />
-            </div>
-            <div>
-            <label for="email">Email:</label>
-              <input
-                type="text"
-                id="email"
-                name="email"
-                placeholder="john@smith.com"
-                onChange={({ target }) => setEmail(target.value)}
-                required
-              />
-            </div>
-            <div>
-            <label for="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                placeholder="johnsmith"
-                onChange={({ target }) => setUsername(target.value)}
-                required
-              />
-            </div>
-            <div>
-            <label for="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="password"
-                onChange={({ target }) => setPassword(target.value)}
-                required
-              />
-            </div>
-            <div>
-            <label for="password_confirmation">Password Confirmation:</label>
-              <input
-                type="password"
-                id="password_confirmation"
-                name="password_confirmation"
-                placeholder="re-type password"
-                onChange={({ target }) => setPasswordConfirmation(target.value)}
-                required
-              />
-            </div>
-            <div>
-            <label for="cooking_level">Your cooking ability:</label>
-              <select name="cooking_level" id="cooking_level" onChange={({ target }) => setCookingLevel(target.value)}
-                required>
-                  <option value="null">Select Cooking Level</option>
-                  <option value="1">1(Rookie! 🥣)</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9(Expert!🧑‍🍳 🌟)</option>
-              </select>
-            </div>
-            <div>
-              <button type="submit" value="Create Account">
-                Submit
-              </button>
+            <div className="form-group">
+                <input
+                  className="form-control"
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Name"
+                  onChange={({ target }) => setName(target.value)}
+                  required
+                />
+                <br/>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="email"
+                  name="email"
+                  placeholder="john@smith.com"
+                  onChange={({ target }) => setEmail(target.value)}
+                  required
+                />
+                <br/>
+                <input
+                  className="form-control"
+                  type="text"
+                  id="username"
+                  name="username"
+                  placeholder="johnsmith"
+                  onChange={({ target }) => setUsername(target.value)}
+                  required
+                />
+                <br/>
+                <input
+                  className="form-control"
+                  type="password"
+                  id="password"
+                  name="password"
+                  placeholder="password"
+                  onChange={({ target }) => setPassword(target.value)}
+                  required
+                />
+                <br/>
+                <input
+                  className="form-control"
+                  type="password"
+                  id="password_confirmation"
+                  name="password_confirmation"
+                  placeholder="re-type password"
+                  onChange={({ target }) => setPasswordConfirmation(target.value)}
+                  required
+                />
+                <br/>
+                <select name="cooking_level" id="cooking_level" className="form-control" onChange={({ target }) => setCookingLevel(target.value)}
+                  required>
+                    <option value="null">Select Cooking Level</option>
+                    <option value="1">1(Rookie! 🥣)</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9(Expert!🧑‍🍳 🌟)</option>
+                </select>
+                <br/>
+                <button type="submit" value="Create Account" className="btn btn-primary btn-block">
+                  Submit
+                </button>
+                
             </div>
           </form>
-
-          <Link to="/login">Log In</Link>
-        </div>
       </div>
-    </div>
-  );
-}
-
-export default Register;
+        );
+      };
+          
+  export default Register;
