@@ -22,9 +22,6 @@ function Register() {
   function submitForm(event) {
     event.preventDefault();
 
-    console.log("this is a print out of all our constants");
-    console.log({ name, email, username, password, password_confirmation, cooking_level });
-
     const data = {
       name: name,
       email: email,

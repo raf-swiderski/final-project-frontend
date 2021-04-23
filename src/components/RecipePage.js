@@ -13,6 +13,7 @@ function RecipePage(props) {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [recipe, setRecipe] = useState({});
+  const historyHook = useHistory();
 
   // const [summary, setSummary] = useState("");
   // const [instructions, setInstructions] = useState("");
@@ -40,6 +41,10 @@ function RecipePage(props) {
         }
       );
   }, []);
+
+  const backHome = () => {
+    historyHook.push("/home");
+  };
 
   if (!isLoaded) {
     return <div>Loading...</div>;
@@ -105,10 +110,11 @@ function RecipePage(props) {
     
         </div>
       </div>
-  
-   );
-  }
-  }
- 
+      <button onClick={backHome}>Back</button>
+    </div>
+  );
+}
+}
+
 
 export default RecipePage;
