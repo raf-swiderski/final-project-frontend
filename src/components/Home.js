@@ -74,7 +74,6 @@ function Home() {
         {/* inserting RecipeList component, it is child component and passsing recipes as props */}
         <RecipeList recipes={recipes} onRecipeCompleted={onRecipeCompleted} />
 
-        <button onClick={onLogOut}>Log Out</button>
       </div>
     );
   }
