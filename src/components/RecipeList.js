@@ -84,7 +84,7 @@ function RecipeList({ recipes, onRecipeCompleted }) {
               <td>
                 <Link to={`/recipe/${recipe.recipe_id}`} className="btn btn-primary href"> <FontAwesomeIcon icon={faEye} size='1x'/></Link>
                 {recipes.completed.includes(recipe.recipe_id) ? (
-                  <td><span>&#10003;</span></td>
+                  <span>&#10003;</span>
                 ) : (
                   
                     <Link
